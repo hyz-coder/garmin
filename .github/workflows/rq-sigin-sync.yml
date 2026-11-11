@@ -13,9 +13,9 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - name: Set up Python 3.9.15
-        uses: actions/setup-python@v4.3.0
+        uses: actions/setup-python@v6
         with:
           python-version: "3.9.15"
       - name: Install dependencies
@@ -30,6 +30,6 @@ jobs:
       - name: Run RQ Sigin Sync
         run: |
           python scripts/rq_sgin.py --email=${{ secrets.RQ_EMAIL }} --password=${{ secrets.RQ_PASSWORD }} --AESKEY=${{ secrets.AESKEY }}
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: Save RQ Token
